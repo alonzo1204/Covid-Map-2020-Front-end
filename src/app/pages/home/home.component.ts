@@ -67,7 +67,7 @@ export class HomeComponent implements OnDestroy,OnInit {
       let cardsettings : ParamsSettingCards;
       //this.getComments()
       this.getDataCountryById(1)
-      this.getComments()
+      
       setTimeout(() => {
         let cardsettings : ParamsSettingCards;
         cardsettings = {
@@ -308,17 +308,7 @@ export class HomeComponent implements OnDestroy,OnInit {
       }
     );
   }
-  getComments() {
-    this.CommentService.getComments().subscribe(
-      data => {
-        console.log("getComments",data)
-        this.CommentService.comments = data as DataComment[];
-      },
-      err => {
-        console.log(err)
-      }
-    );
-  }
+
   getDataCountryById(id: number){
     this.dataCountryService.getDataCountrieById(id).subscribe(
       res =>{
