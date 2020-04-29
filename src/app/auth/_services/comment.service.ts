@@ -13,6 +13,7 @@ const API_URL = 'http://localhost:8080/api/test/';
 export class CommentService {
   comments: DataComment[];
   commentsById:DataComment;
+  commentsByIdDataCountry: DataComment[];
 
   constructor(private http: HttpClient) { }
 
@@ -25,4 +26,12 @@ export class CommentService {
         map(res => res[0]) // or any other operator
       )
   }
+
+  getCommentsByIdDataCountry(idDataCountry:number): Observable<any> {
+    return this.http.get(API_URL + `comments/${idDataCountry}`)
+    .pipe(
+        map(res => res[0]) // or any other operator
+      )
+  }
+
 }

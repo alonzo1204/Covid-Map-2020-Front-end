@@ -4,7 +4,7 @@ import { takeWhile } from 'rxjs/operators';
 import { SolarData } from '../../@core/data/solar';
 import { DataCountryService } from '../../auth/_services/dataCountry.service';
 import { CommentService } from '../../auth/_services/comment.service'
-import { DataComment } from '../../model/comment' 
+import { DataComment }from '../../model/comment'
 import { DataCountry } from '../../model/data-country'
 
 interface CardSettings {
@@ -64,7 +64,6 @@ export class HomeComponent implements OnDestroy,OnInit {
     private solarService: SolarData,
     public dataCountryService: DataCountryService,
     public CommentService: CommentService ) {
-      let cardsettings : ParamsSettingCards;
       //this.getComments()
       this.getDataCountryById(1)
       
@@ -105,7 +104,6 @@ export class HomeComponent implements OnDestroy,OnInit {
     this.casesCard = {
       title: "Casos",
       detail: params.cardsetting1,
-     // iconClass: 'nb-lightbulb',
      iconClass: 'nb-location',
       type: 'primary',
     };
@@ -320,6 +318,17 @@ export class HomeComponent implements OnDestroy,OnInit {
     )
   }
 
+  getCommentsByIdDataCountry(idDataCountry: number){
+    this.CommentService.getCommentsByIdDataCountry(idDataCountry).subscribe(
+      res =>{
+        console.log("data dentro de la funcion",res)
+        this.CommentService.commentsByIdDataCountry = res as DataComment[];
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
 
   ngOnDestroy() {
     this.alive = false;
