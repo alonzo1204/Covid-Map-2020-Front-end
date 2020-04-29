@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
 
 import {
   NbMediaBreakpointsService,
@@ -14,17 +14,20 @@ import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { TokenStorageService } from '../../../auth/_services/token-storage.service';
 
+
 @Component({
   selector: "ngx-header",
   styleUrls: ["./header.component.scss"],
   templateUrl: "./header.component.html",
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   user: any;
   currentUser: any;
+
+  @ViewChild('myDiv') myDiv: ElementRef<HTMLElement>;
 
   themes = [
     {
@@ -61,6 +64,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private token: TokenStorageService
   ) {}
 
+  ngAfterViewInit(): void {
+    this.triggerFalseClick()
+  }
+
   ngOnInit() {
 
     
@@ -93,6 +100,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((themeName) => (this.currentTheme = themeName));
       
   }
+
+  triggerFalseClick() {
+    let el: HTMLElement = this.myDiv.nativeElement;
+    el.click();
+}
 
   ngOnDestroy() {
     this.destroy$.next();
