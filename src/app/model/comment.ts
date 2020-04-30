@@ -1,6 +1,7 @@
 export class DataComment {
-    id:Number;
-    idCoumtry: Number;
+    id?:Number;
+    idDataCountry: Number;
+    idUsername: Number;
     country:String;
     comment : String ;
    

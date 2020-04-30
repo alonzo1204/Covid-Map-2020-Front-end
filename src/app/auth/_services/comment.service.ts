@@ -26,7 +26,9 @@ export class CommentService {
         map(res => res[0]) // or any other operator
       )
   }
-
+  postComments(data: any):Observable<any>{
+    return this.http.post(API_URL + 'comments',data);
+  }
   getCommentsByIdDataCountry(idDataCountry:number): Observable<any> {
     return this.http.get(API_URL + `comments/${idDataCountry}`)
     .pipe(

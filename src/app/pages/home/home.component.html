@@ -1,13 +1,10 @@
 <div class="form-group">
-  <nb-select 
-  placeholder="Seleccionar País"
-  (selectedChange)="showExtraCards($event)"
-  name="idDataCountry" 
-  [(ngModel)]="form.idDataCountry"
-   keyboardType="number">
-    <nb-option  *ngFor="let dataCountry of dataCountryService.dataCountries" value={{dataCountry.id}}>{{dataCountry.country}}</nb-option>
+  <nb-select placeholder="Seleccionar País" (selectedChange)="showExtraCards($event)" name="idDataCountry"
+    [(ngModel)]="form.idDataCountry" keyboardType="number">
+    <nb-option *ngFor="let dataCountry of dataCountryService.dataCountries" value={{dataCountry.id}}>
+      {{dataCountry.country}}</nb-option>
   </nb-select>
-  
+
 </div>
 
 <div class="row">
@@ -34,7 +31,7 @@
     </nb-card>
   </div>
 
-  <div class="col-lg-6"  >
+  <div class="col-lg-6">
     <nb-card>
       <nb-card-header>Bar</nb-card-header>
       <nb-card-body>
@@ -44,8 +41,8 @@
   </div>
 </div>
 
-<div class="row" *ngIf="!checkCountry" >
-    <div class="col-md-6 offset-md-3">
+<div class="row" *ngIf="!checkCountry">
+  <div class="col-md-6 offset-md-3">
     <nb-card>
       <nb-card-header>Advanced Pie</nb-card-header>
       <nb-card-body>
@@ -58,7 +55,7 @@
 
 <ngx-comment></ngx-comment>
 
-<ngx-addComment></ngx-addComment>
+<ngx-addComment (greetEvent)="createComment($event)"></ngx-addComment>
 <!-- <div class="row">
   <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
     <ngx-temperature></ngx-temperature>

@@ -6,6 +6,7 @@ import { DataCountryService } from '../../auth/_services/dataCountry.service';
 import { CommentService } from '../../auth/_services/comment.service'
 import { DataComment }from '../../model/comment'
 import { DataCountry } from '../../model/data-country'
+import { TokenStorageService } from '../../auth/_services/token-storage.service';
 
 interface CardSettings {
   title: string;
@@ -35,13 +36,14 @@ interface ParamsSettingCards{
 export class HomeComponent implements OnDestroy,OnInit {
   //dataTable: DataCountry;
   form: any = {};
+  idCountrySelected : number;
   private alive = true;
   checkCountry = false;
   //datos de prueba para pasarlos a dinamicos
 
 
   solarValue: number;
-
+  
   casesCard: CardSettings
   activeCard: CardSettings
   deathsCard: CardSettings 
@@ -52,7 +54,7 @@ export class HomeComponent implements OnDestroy,OnInit {
   totalDeathsCard: CardSettings 
 
   statusCards: string;
-
+  currentUser: any;
   commonStatusCardsSet: CardSettings[]
   statusCardsByThemes: {
     default: CardSettings[];
@@ -63,10 +65,13 @@ export class HomeComponent implements OnDestroy,OnInit {
   constructor(private themeService: NbThemeService,
     private solarService: SolarData,
     public dataCountryService: DataCountryService,
-    public CommentService: CommentService ) {
+    public CommentService: CommentService ,
+    private token: TokenStorageService,
+    ) {
       //this.getComments()
+      this.currentUser = this.token.getUser();
       this.getDataCountryById(1)
-      
+     this.idCountrySelected = 1
       setTimeout(() => {
         let cardsettings : ParamsSettingCards;
         cardsettings = {
@@ -273,7 +278,7 @@ export class HomeComponent implements OnDestroy,OnInit {
   
   showExtraCards(e) {
     let id = Number(e);
-    console.log("numer id ",id)
+    this.idCountrySelected = id
     this.getDataCountryById(id)
     this.checkCountry = true;
     setTimeout(() => {
@@ -295,7 +300,21 @@ export class HomeComponent implements OnDestroy,OnInit {
 
 
   }
-
+  createComment(coment: string){
+     let newComment = {
+      idDataCountry: this.idCountrySelected,
+      idUsername: this.currentUser.id,
+      comment: coment
+    }
+    this.CommentService.postComments(newComment).subscribe(
+      data => {
+        console.log("data",data)
+      },
+      err => {
+        console.log(err)
+      }
+    );
+  } 
   getDataCountries() {
     this.dataCountryService.getDataCountries().subscribe(
       data => {
