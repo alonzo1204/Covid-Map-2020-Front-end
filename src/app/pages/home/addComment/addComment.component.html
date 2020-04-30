@@ -11,3 +11,16 @@
     </nb-card>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Comentarios</nb-card-header>
+      <nb-card-body>
+        <p *ngIf="comments.length == 0">Sin Comentarios</p>
+          <p *ngFor="let i of comments">{{i.comment}}</p>
+   
+     
+    </nb-card-body>
+  </nb-card>
+</div>
+</div>

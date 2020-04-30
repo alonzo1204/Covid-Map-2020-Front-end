@@ -1,4 +1,5 @@
 import { Component , Input,EventEmitter, Output} from '@angular/core';
+import { DataComment } from '../../../model/comment';
 
 
 @Component({
@@ -7,6 +8,7 @@ import { Component , Input,EventEmitter, Output} from '@angular/core';
   templateUrl: './addComment.component.html',
 })
 export class AddCommentComponent {
+  @Input() comments : DataComment[]
   @Output() greetEvent = new EventEmitter();
   coment:string;
 

@@ -72,6 +72,7 @@ export class HomeComponent implements OnDestroy,OnInit {
       this.currentUser = this.token.getUser();
       this.getDataCountryById(1)
      this.idCountrySelected = 1
+     this.getCommentsByIdDataCountry()
       setTimeout(() => {
         let cardsettings : ParamsSettingCards;
         cardsettings = {
@@ -280,6 +281,7 @@ export class HomeComponent implements OnDestroy,OnInit {
     let id = Number(e);
     this.idCountrySelected = id
     this.getDataCountryById(id)
+    this.getCommentsByIdDataCountry()
     this.checkCountry = true;
     setTimeout(() => {
       let cardsettings : ParamsSettingCards;
@@ -337,10 +339,11 @@ export class HomeComponent implements OnDestroy,OnInit {
     )
   }
 
-  getCommentsByIdDataCountry(idDataCountry: number){
-    this.CommentService.getCommentsByIdDataCountry(idDataCountry).subscribe(
+  getCommentsByIdDataCountry(){
+
+    this.CommentService.getCommentsByIdDataCountry(this.idCountrySelected).subscribe(
       res =>{
-        console.log("data dentro de la funcion",res)
+        console.log(res)
         this.CommentService.commentsByIdDataCountry = res as DataComment[];
       },
       err => {
