@@ -17,5 +17,6 @@ export class AddCommentComponent {
  
  createComent(){
   this.greetEvent.emit(this.coment);
+  this.coment= " ";
  }
 }

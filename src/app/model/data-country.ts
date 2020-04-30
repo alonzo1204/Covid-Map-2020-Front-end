@@ -1,6 +1,7 @@
 export class DataCountry {
     id:Number;
     codeCountry: String;
+    continent: String;
     country:String;
     cases : Number ;
     todayCases:Number;

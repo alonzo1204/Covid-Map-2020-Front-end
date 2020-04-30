@@ -306,16 +306,21 @@ export class HomeComponent implements OnDestroy,OnInit {
      let newComment = {
       idDataCountry: this.idCountrySelected,
       idUsername: this.currentUser.id,
+      username: this.currentUser.username,
       comment: coment
     }
+    console.log("new comment log",newComment)
     this.CommentService.postComments(newComment).subscribe(
       data => {
         console.log("data",data)
+        this.getCommentsByIdDataCountry()
       },
       err => {
         console.log(err)
       }
     );
+
+    this.getCommentsByIdDataCountry();
   } 
   getDataCountries() {
     this.dataCountryService.getDataCountries().subscribe(
