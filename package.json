@@ -27,6 +27,7 @@
     "docs": "compodoc -p src/tsconfig.app.json -d docs",
     "docs:serve": "compodoc -p src/tsconfig.app.json -d docs -s",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
+    "preinstall": "npm install -g angular-cli",
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "@angular/cdk": "^9.1.2",
     "@angular/common": "^9.0.4",
     "@angular/compiler": "^9.0.4",
+    "@angular/cli": "7.3.9",,
     "@angular/core": "^9.0.4",
     "@angular/forms": "^9.0.4",
     "@angular/google-maps": "^9.1.0",
