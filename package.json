@@ -13,7 +13,7 @@
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
     "dev": "ng serve --port 8081",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
@@ -29,6 +29,9 @@
     "postinstall": "ng build  --aot --prod"
   },
   "dependencies": {
+    "@angular/cli": "^9.1.4",
+    "@angular/compiler-cli": "^9.1.5",
+    "typescript": "3.7.5",
     "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "^9.1.5",
     "@angular/cdk": "^9.2.2",
@@ -76,9 +79,8 @@
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.900.7",
     "@angular/cli": "^9.1.4",
-    "@angular/compiler-cli": "^9.1.5",
+    "@angular-devkit/build-angular": "^0.900.7",
     "@angular/language-service": "9.0.4",
     "@compodoc/compodoc": "1.0.1",
     "@fortawesome/fontawesome-free": "^5.13.0",
@@ -104,7 +106,6 @@
     "stylelint": "7.13.0",
     "ts-node": "3.2.2",
     "tslint": "^5.20.1",
-    "tslint-language-service": "^0.9.9",
-    "typescript": "3.7.5"
+    "tslint-language-service": "^0.9.9"
   }
 }
