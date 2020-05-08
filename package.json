@@ -14,7 +14,7 @@
     "conventional-changelog": "conventional-changelog",
     "dev": "ng serve --port 8081",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --aot",
     "build:prod": "npm run build -- --prod --aot",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
