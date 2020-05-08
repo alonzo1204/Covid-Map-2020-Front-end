@@ -7,7 +7,7 @@ import { CountryTreeGrid } from '../../model/country-tree-grid';
 import { map } from 'rxjs/operators';
 
 //const API_URL = 'http://covid-map-2020-back-end.herokuapp.com/api/test/';
-const API_URL = 'http://covid-map-2020-back-end.herokuapp.com/api/test/';
+const API_URL = 'https://covid-map-2020-back-end.herokuapp.com/api/test/';
 
 @Injectable({
   providedIn: 'root'
