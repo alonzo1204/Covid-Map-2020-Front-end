@@ -13,36 +13,36 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'home-outline',
     link: '/pages/home',
   },
-  {
-    title: 'Análisis por continente',
-    icon: 'edit-2-outline',
-    children: [
-      {
-        title: 'Asia',
-        link: '/pages/continentdetail/asia',
-      },
-      {
-        title: 'Europa',
-        link: '/pages/continentdetail/europa',
-      },
-      {
-        title: 'North America',
-        link: '/pages/continentdetail/northamerica',
-      },
-      {
-        title: 'South America',
-        link: '/pages/continentdetail/southamerica',
-      },
-      {
-        title: 'Africa',
-        link: '/pages/continentdetail/africa',
-      },
-      {
-        title: 'Oceania',
-        link: '/pages/continentdetail/oceania',
-      },
-    ],
-  },
+  // {
+  //   title: 'Análisis por continente',
+  //   icon: 'edit-2-outline',
+  //   children: [
+  //     {
+  //       title: 'Asia',
+  //       link: '/pages/continentdetail/asia',
+  //     },
+  //     {
+  //       title: 'Europa',
+  //       link: '/pages/continentdetail/europa',
+  //     },
+  //     {
+  //       title: 'North America',
+  //       link: '/pages/continentdetail/northamerica',
+  //     },
+  //     {
+  //       title: 'South America',
+  //       link: '/pages/continentdetail/southamerica',
+  //     },
+  //     {
+  //       title: 'Africa',
+  //       link: '/pages/continentdetail/africa',
+  //     },
+  //     {
+  //       title: 'Oceania',
+  //       link: '/pages/continentdetail/oceania',
+  //     },
+  //   ],
+  // },
   {
     title: 'Información general de países ',
     icon: 'grid-outline',
