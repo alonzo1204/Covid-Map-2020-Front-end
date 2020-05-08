@@ -14,8 +14,8 @@
     "conventional-changelog": "conventional-changelog",
     "dev": "ng serve --port 8081",
     "start": "ng serve",
-    "build": "ng build --prod --aot",
-    "build:prod": "npm run build -- --prod --aot",
+    "build": "ng build --prod",
+    "build:prod": "ng build --aot -prod",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
     "lint": "ng lint",
@@ -30,6 +30,9 @@
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points"
   },
   "dependencies": {
+    "@angular-devkit/build-angular": "^0.900.7",
+    "@angular/cli": "^9.1.4",
+    "@angular/compiler-cli": "^9.1.5",
     "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "^9.1.5",
     "@angular/cdk": "^9.2.2",
