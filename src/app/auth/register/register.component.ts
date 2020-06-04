@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { DataCountryService } from '../_services/dataCountry.service';
-
+import { NbThemeService } from '@nebular/theme';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { FormGroup } from '@angular/forms';
@@ -15,7 +15,8 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  constructor( private authService: AuthService,
+  constructor( private themeService: NbThemeService,
+    private authService: AuthService,
     private tokenStorage: TokenStorageService,
     public dataCountryService: DataCountryService,
     private router: Router) { }
