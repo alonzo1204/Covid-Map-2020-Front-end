@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CountryFormatMap } from '../../model/country-format-map';
 import { DataCountry } from '../../model/data-country'
 import { CountryTreeGrid } from '../../model/country-tree-grid';
+import { CountriesByContinent } from '../../model/countries-by-continent';
 import { map } from 'rxjs/operators';
 
 //const API_URL = 'http://covid-map-2020-back-end.herokuapp.com/api/test/';
@@ -17,6 +18,7 @@ export class DataCountryService {
   dataCountrieById:DataCountry;
   dataCountriesFormatMap: CountryFormatMap;
   dataCountriesTreeGrid: CountryTreeGrid;
+  countriesByContinent: CountriesByContinent[];
 
   constructor(private http: HttpClient) { }
 
@@ -34,5 +36,8 @@ export class DataCountryService {
   }
   getDataCountriesTreeGrid(): Observable<any> {
     return this.http.get(API_URL + 'getDataCountriesTreeGrid');
+  }
+  getCountriesByContinent(): Observable<any> {
+    return this.http.get(API_URL + 'getCountriesByContinent');
   }
 }

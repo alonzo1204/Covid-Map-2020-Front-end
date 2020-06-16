@@ -1,5 +1,8 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { DataCountryService } from '../../../auth/_services/dataCountry.service';
+import { CountriesByContinent } from '../../../model/countries-by-continent';
+
 
 @Component({
   selector: 'ngx-echarts-pie',
@@ -11,12 +14,13 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService,
+    public dataCountryService: DataCountryService) {
   }
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
+ 
       const colors = config.variables;
       const echarts: any = config.variables.echarts;
 
@@ -75,6 +79,20 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
       };
     });
   }
+
+  getCountriesByContinent() {
+    this.dataCountryService.getCountriesByContinent().subscribe(
+      data => {
+        console.log("getCountriesByContinent",data)
+        this.dataCountryService.countriesByContinent = data as CountriesByContinent[];
+      },
+      err => {
+        console.log(err)
+      }
+    );
+  }
+
+
 
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
