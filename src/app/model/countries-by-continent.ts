@@ -1,3 +1,5 @@
 export class CountriesByContinent {
-    response: any []
+    //response: any []
+    body: any[]
+    header: any[]
 }
