@@ -1,5 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, AfterViewInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { DataCountryService } from '../../../auth/_services/dataCountry.service';
+
+
 
 @Component({
   selector: 'ngx-d3-bar',
@@ -15,15 +18,9 @@ import { NbThemeService } from '@nebular/theme';
     </ngx-charts-bar-vertical>
   `,
 })
-export class D3BarComponent implements OnDestroy {
+export class D3BarComponent implements AfterViewInit, OnDestroy {
 
-  results = [
-    { name: 'USA', value: 89402 },
-    { name: 'Spain', value: 50020 },
-    { name: 'Italy', value: 42000 },
-    { name: 'France', value: 50800 },
-    { name: 'Germany', value: 72200 },
-  ];
+  results = [ ];
   showLegend = true;
   showXAxis = true;
   showYAxis = true;
@@ -32,13 +29,32 @@ export class D3BarComponent implements OnDestroy {
   colorScheme: any;
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-      const colors: any = config.variables;
-      this.colorScheme = {
-        domain: [colors.primaryLight, colors.infoLight, colors.successLight, colors.warningLight, colors.dangerLight],
-      };
-    });
+  constructor(private theme: NbThemeService,
+    public dataCountryService: DataCountryService) {
+  }
+
+  ngAfterViewInit(): void {
+    this.dataCountryService.getTopFiveCountries().subscribe(
+      data => {
+        //console.log('DataTop: ', data.response);
+        var jsonData = data.response;
+
+        this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+          const colors: any = config.variables;
+          this.colorScheme = {
+            domain: [colors.primaryLight, colors.infoLight, colors.successLight, colors.warningLight, colors.dangerLight],
+          };
+          this.results = [
+            { name: jsonData[0].data.Pais, value: jsonData[0].data.Casos },
+            { name: jsonData[1].data.Pais, value: jsonData[1].data.Casos },
+            { name: jsonData[2].data.Pais, value: jsonData[2].data.Casos },
+            { name: jsonData[3].data.Pais, value: jsonData[3].data.Casos },
+            { name: jsonData[4].data.Pais, value: jsonData[4].data.Casos },
+        ]
+        });
+      }
+    )
+    
   }
 
   ngOnDestroy(): void {

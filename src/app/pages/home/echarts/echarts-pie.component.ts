@@ -25,16 +25,15 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
       data => {
         
         //this.dataCountryService.countriesByContinent = data as CountriesByContinent[];
-        var jsonData = data
+        var jsonData = data;
         this.dataCountryByContinent = this.dataCountryService.countriesByContinent;
         this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
     
           const colors = config.variables;
           const echarts: any = config.variables.echarts;
           //console.log("getCountriesByContinent", this.dataCountryService.countriesByContinent)
-          console.log("getCountriesByContinent jsonData: ",jsonData.body);
+          //console.log("getCountriesByContinent jsonData: ",jsonData.body);
           var asiaValues = jsonData.body[0];
-          
           var europeValues = jsonData.body[1];
           var oceaniaValues = jsonData.body[2];
           var northAmValues = jsonData.body[3];
@@ -103,21 +102,6 @@ export class EchartsPieComponent implements AfterViewInit, OnDestroy {
   }
 );
   }
-
-  getCountriesByContinent() {
-    this.dataCountryService.getCountriesByContinent().subscribe(
-      data => {
-        console.log("getCountriesByContinent",data)
-        this.dataCountryService.countriesByContinent = data as CountriesByContinent[];
-        
-      },
-      err => {
-        console.log(err)
-      }
-    );
-  }
-
-
 
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();

@@ -40,4 +40,8 @@ export class DataCountryService {
   getCountriesByContinent(): Observable<any> {
     return this.http.get(API_URL + 'getCountriesByContinent');
   }
+
+  getTopFiveCountries(): Observable<any> {
+    return this.http.get(API_URL + 'getTopFiveCountries');
+  }
 }
