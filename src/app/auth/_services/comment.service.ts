@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { DataComment } from '../../model/comment'
 import { map } from 'rxjs/operators';
 
-//const API_URL = 'http://covid-map-2020-back-end.herokuapp.com/api/test/';
-const API_URL = 'http://localhost:8080/api/test/';
+const API_URL = 'http://covid-map-2020-back-end.herokuapp.com/api/test/';
+//const API_URL = 'http://localhost:8080/api/test/';
 
 @Injectable({
   providedIn: 'root'
