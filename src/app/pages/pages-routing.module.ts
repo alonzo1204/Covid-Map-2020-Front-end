@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { ProductComponent } from './product/product.component';
@@ -13,18 +12,12 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    {
-      path: 'dashboard',
-      component: ECommerceComponent,
-    },
+
     {
       path: 'product',
       component: ProductComponent,
     },
-    {
-      path: 'iot-dashboard',
-      component: DashboardComponent,
-    },
+
     {
       path: 'home',
       component: HomeComponent,//home
